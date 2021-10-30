@@ -11,12 +11,27 @@ class _AddListpageState extends State<AddListpage> {
 
   String _text = '';
 
+  // TextEditingController _controller;
+  //
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   _controller = TextEditingController();
+  // }
+  //
+  // @override
+  // void dispose() {
+  //   _controller.dispose();
+  //   super.dispose();
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('リスト追加'),
       ),
+
       body:Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -25,10 +40,11 @@ class _AddListpageState extends State<AddListpage> {
             TextField(
               onChanged: (String value){
                 setState(() {
-                  _text = value;
+                _text = value;
                 });
-              },
-            ),
+              }),
+            const SizedBox(height:8),
+
             Container(
               child: ElevatedButton(
                 onPressed: () {
@@ -42,4 +58,33 @@ class _AddListpageState extends State<AddListpage> {
       ),
     );
   }
+  // Widget build(BuildContext context) {
+  //   return Scaffold(
+  //     body: Center(
+  //       child: TextField(
+  //         controller: _controller,
+  //         onSubmitted: (String value) async {
+  //           await showDialog<void>(
+  //             context: context,
+  //             builder: (BuildContext context) {
+  //               return AlertDialog(
+  //                 title: const Text('Thanks!'),
+  //                 content: Text(
+  //                     'You typed "$value", which has length ${value.characters.length}.'),
+  //                 actions: <Widget>[
+  //                   TextButton(
+  //                     onPressed: () {
+  //                       Navigator.pop(context);
+  //                     },
+  //                     child: const Text('OK'),
+  //                   ),
+  //                 ],
+  //               );
+  //             },
+  //           );
+  //         },
+  //       ),
+  //     ),
+  //   );
+  // }
 }

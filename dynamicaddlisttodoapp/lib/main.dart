@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'addlistpage.dart';
+import 'addlistpage2.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,6 +18,14 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
       ),
       home: HomePage(),
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale("en"),
+        const Locale("ja"),
+      ],
     );
   }
 }
@@ -143,8 +152,13 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add),
         onPressed: () async {
           final newListText = await Navigator.of(context).push(
-            MaterialPageRoute(builder: (context){
-              return AddListpage();
+            MaterialPageRoute(builder: (context) {
+              return AddListpage2(title: ''
+                  , serviceName: ''
+                  , serviceFee: ''
+                  , nextPayDate: DateTime.now()
+                  , interval: 'month'
+                  , memo: "");
             }),
           );
           if (newListText != null) {
